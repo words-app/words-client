@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
@@ -38,5 +38,9 @@ module.exports = {
       template:'./src/index.html',
       title: 'Nizzotes Client'
     }),
-  ]
+  ],
+
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };

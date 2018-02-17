@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { render } from 'react-dom';
 
-class App extends React.Component {
+import { Editor } from './components/editor/Editor';
+
+class App extends PureComponent {
     render() {
-        return <h1>Working!</h1>;
+        return <Editor />;
     }
 }
 
