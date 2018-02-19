@@ -6,11 +6,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
+    historyApiFallback: true,
     overlay: true,
   },
 
   entry: {
-    app: './src/app.js'
+    app: './src/index.js'
   },
 
   module: {
