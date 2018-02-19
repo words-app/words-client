@@ -1,12 +1,13 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-// import todoApp from './reducers'
-import Root from './components/Root'
+import React from 'react';
+import { render } from 'react-dom';
 
-let store = createStore(todoApp)
+import { store } from './store';
+
+import Root from './components/Root';
+
+console.log(store.getState());
 
 render(
   <Root store={store} />,
   document.getElementById('root')
-)
+);

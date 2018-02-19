@@ -10,6 +10,8 @@ module.exports = {
     overlay: true,
   },
 
+  devtool: 'source-map',
+
   entry: {
     app: './src/index.js'
   },

@@ -1,3 +1,6 @@
 {
-  "plugins": ["transform-react-jsx"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-react-jsx"
+  ]
 }
