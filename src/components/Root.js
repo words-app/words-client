@@ -1,20 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import App from './App'
+import { store } from '../store';
+
+import { App } from './App';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-      <Route path="/:filter?" component={App} />
+      <Route path="/" component={App} />
     </Router>
   </Provider>
-)
+);
 
-Root.propTypes = {
-  store: PropTypes.object.isRequired
-}
-
-export default Root
+export default Root;

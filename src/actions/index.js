@@ -30,6 +30,7 @@ export function fetchNotes() {
     return function(dispatch) {
         dispatch(fetchNotesRequest());
 
+        // TODO: this should likely be extracted out to a variable
         return fetch('http://localhost:3000/notes')
             .then(
                 response => response.json(),
