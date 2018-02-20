@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch';
+
 // Action Types
 
 // export const ADD_NOTE = 'ADD_NOTE';
@@ -24,6 +26,22 @@ export const FETCH_NOTES_SUCCESS = 'FETCH_NOTES_SUCCESS';
 //     }
 // }
 
+export function fetchNotes() {
+    return function(dispatch) {
+        dispatch(fetchNotesRequest());
+
+        return fetch('http://localhost:3000/notes')
+            .then(
+                response => response.json(),
+
+                error => dispatch(fetchNotesFailure(error))
+            )
+            .then(
+                json => dispatch(fetchNotesSuccess(json))
+            );
+    }
+}
+
 export function fetchNotesFailure(error) {
     return {
         type: FETCH_NOTES_FAILURE,
@@ -32,12 +50,14 @@ export function fetchNotesFailure(error) {
 }
 
 export function fetchNotesRequest() {
-    return { FETCH_NOTES_REQUEST }
+    return { 
+        type: FETCH_NOTES_REQUEST 
+    }
 }
 
 export function fetchNotesSuccess(response) {
     return {
-        FETCH_NOTES_SUCCESS,
+        type: FETCH_NOTES_SUCCESS,
         response
     }
 }
