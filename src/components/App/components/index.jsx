@@ -14,7 +14,15 @@ export class App extends PureComponent {
     }
 
     componentWillReceiveProps(newProps) {
-        this.setState({ notes: newProps.notes });
+        const noteID = newProps.match.params.noteID;
+        const notes = newProps.notes;
+
+        console.log(noteID);
+
+        this.setState({ 
+            noteID,
+            notes
+        });
     }
 
     renderEditor() {
@@ -29,7 +37,7 @@ export class App extends PureComponent {
     render() {
         return (
             <div>
-                <List />
+                <List notes={this.state.notes} />
                 { this.renderEditor() }
             </div>
         );

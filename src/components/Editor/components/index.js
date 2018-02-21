@@ -6,10 +6,16 @@ export class Editor extends Component {
         super(props);
 
         this.state = {
-            value: props.value ? props.value : RichTextEditor.createEmptyValue()
+            value: props.value ? RichTextEditor.createValueFromString(props.value, 'html') : RichTextEditor.createEmptyValue()
         };
 
         this.onChange = this.onChange.bind(this);
+    }
+
+    componentWillReceiveProps(newProps) {
+        this.setState({
+            value: RichTextEditor.createValueFromString(newProps.value, 'html')
+        });
     }
 
     onChange(value) {
