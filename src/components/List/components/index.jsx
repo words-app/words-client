@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 export class List extends PureComponent {
     render() {
@@ -7,13 +8,15 @@ export class List extends PureComponent {
         }
 
         const notes = this.props.notes.map((note, i) => 
-            <li key={i}>{ note.name }</li>
+            <li key={i}>
+                <Link to={note._id}>
+                    { note.name }
+                </Link>
+            </li>
         );
 
         return (
             <div>
-                <h2>Hello from the List component</h2>
-
                 <ul>
                     {notes}
                 </ul>
