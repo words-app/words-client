@@ -2,7 +2,11 @@ import React, { PureComponent } from 'react';
 
 export class List extends PureComponent {
     render() {
-        const notes = props.notes.map((note, i) => 
+        if (!this.props.notes) {
+            return <h3>Loading...</h3>;
+        }
+
+        const notes = this.props.notes.map((note, i) => 
             <li key={i}>{ note.name }</li>
         );
 
