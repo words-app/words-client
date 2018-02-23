@@ -28,7 +28,7 @@ export class App extends PureComponent {
         const selectedNote = notes.find(note => note._id === noteID);
 
         if (selectedNote) {
-            return <Editor value={selectedNote.content} />;
+            return <Editor note={selectedNote} />;
         } else {
             return <Editor />;
         }

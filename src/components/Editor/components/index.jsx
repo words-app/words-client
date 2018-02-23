@@ -6,29 +6,58 @@ export class Editor extends Component {
         super(props);
 
         this.state = {
-            value: this.getInitialValue(props)
+            note: props.note || this.getEmptyNote(),
+            value: this.getInitialValue(props),
         };
 
-        this.onChange = this.onChange.bind(this);
+        this.handleEditorChange = this.handleEditorChange.bind(this);
+        this.handleNameChange = this.handleNameChange.bind(this);
     }
 
     componentWillReceiveProps(newProps) {
         this.setState({
+            note: newProps.note || this.getEmptyNote(),
             value: this.getInitialValue(newProps)
         });
     }
 
-    getInitialValue(props) {
-        return props.value ? RichTextEditor.createValueFromString(props.value, 'html') : RichTextEditor.createEmptyValue();
+    getEmptyNote() {
+        return {
+            name: "",
+            content: ""
+        }
     }
 
-    onChange(value) {
+    getInitialValue(props) {
+        return props.note ? RichTextEditor.createValueFromString(props.note.content, 'html') : RichTextEditor.createEmptyValue();
+    }
+
+    handleNameChange(event) {
+        const { note } = this.state;
+
+        note.name = event.target.value;
+
+        this.setState({ note });
+    }
+
+    handleEditorChange(value) {
         this.setState({ value });
     }
 
     render() {
+        const { note } = this.state;
+
         return (
-            <RichTextEditor value={this.state.value} onChange={this.onChange} />
+            <article>
+                <header>
+                    <input 
+                        type="text" 
+                        value={ note.name }
+                        onChange={this.handleNameChange} />
+                </header>
+
+                <RichTextEditor value={this.state.value} onChange={this.handleEditorChange} />
+            </article>
         );
     }
 }
