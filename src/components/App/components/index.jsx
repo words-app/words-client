@@ -17,8 +17,6 @@ export class App extends PureComponent {
         const noteID = newProps.match.params.noteID;
         const notes = newProps.notes;
 
-        console.log(noteID);
-
         this.setState({ 
             noteID,
             notes
@@ -31,6 +29,8 @@ export class App extends PureComponent {
 
         if (selectedNote) {
             return <Editor value={selectedNote.content} />;
+        } else {
+            return <Editor />;
         }
     }
 

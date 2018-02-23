@@ -6,7 +6,7 @@ export class Editor extends Component {
         super(props);
 
         this.state = {
-            value: props.value ? RichTextEditor.createValueFromString(props.value, 'html') : RichTextEditor.createEmptyValue()
+            value: this.getInitialValue(props)
         };
 
         this.onChange = this.onChange.bind(this);
@@ -14,8 +14,12 @@ export class Editor extends Component {
 
     componentWillReceiveProps(newProps) {
         this.setState({
-            value: RichTextEditor.createValueFromString(newProps.value, 'html')
+            value: this.getInitialValue(newProps)
         });
+    }
+
+    getInitialValue(props) {
+        return props.value ? RichTextEditor.createValueFromString(props.value, 'html') : RichTextEditor.createEmptyValue();
     }
 
     onChange(value) {
