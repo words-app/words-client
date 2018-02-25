@@ -47,11 +47,14 @@ export function addNote(note) {
         dispatch(addNoteRequest(note));
 
         return fetch(APIBase, {
+            body: JSON.stringify(note),
+            headers: {
+                "Content-Type": "application/json"
+            },
             method: 'POST',
-            body: JSON.stringify(note)
         })
         .then(
-            response => response,json(),
+            response => response.json(),
 
             error => dispatch(addNoteFailure(error))
         )

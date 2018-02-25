@@ -26,7 +26,7 @@ export function notesApp(state = initialState, action) {
 
             return newState;
         case ADD_NOTE_SUCCESS:
-            newState.notes.concat([action.note]);
+            newState.notes = newState.notes.concat([action.note]);
 
             return newState;
         case FETCH_NOTES_FAILURE:
