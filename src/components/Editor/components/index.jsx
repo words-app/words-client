@@ -6,8 +6,7 @@ export class Editor extends Component {
         super(props);
 
         this.state = {
-            note: props.note || this.getEmptyNote(),
-            value: this.getInitialValue(props),
+            note: props.note ? this.getInitialValue(props) : this.getEmptyNote()
         };
 
         this.handleEditorChange = this.handleEditorChange.bind(this);
@@ -17,24 +16,28 @@ export class Editor extends Component {
 
     componentWillReceiveProps(newProps) {
         this.setState({
-            note: newProps.note || this.getEmptyNote(),
-            value: this.getInitialValue(newProps)
+            note: newProps.note ? this.getInitialValue(newProps) : this.getEmptyNote()
         });
     }
 
-    createNote(note) {
-        console.log('creating', note);
+    createNote() {
+        console.log('creating', this.state.note);
     }
 
     getEmptyNote() {
         return {
             name: "",
-            content: ""
+            content: RichTextEditor.createEmptyValue()
         }
     }
 
     getInitialValue(props) {
-        return props.note ? RichTextEditor.createValueFromString(props.note.content, 'html') : RichTextEditor.createEmptyValue();
+        const { note } = props;
+
+        return {
+            name: note.name,
+            content: RichTextEditor.createValueFromString(note.content, 'html')
+        }
     }
 
     handleNameChange(event) {
@@ -45,8 +48,8 @@ export class Editor extends Component {
         this.setState({ note });
     }
 
-    handleEditorChange(value) {
-        this.setState({ value });
+    handleEditorChange(content) {
+        this.setState({ content });
     }
 
     handleSaveClick(event) {
@@ -56,14 +59,14 @@ export class Editor extends Component {
 
         // check for an existing ID to determine if the current note should be saved or created
         if (note.hasOwnProperty('_id')) {
-            this.saveNote(note);
+            this.saveNote();
         } else {
-            this.createNote(note);
+            this.createNote();
         }
     }
 
-    saveNote(note) {
-        console.log('saving', note);
+    saveNote() {
+        console.log('saving', this.state.note);
     }
 
     render() {
@@ -72,15 +75,15 @@ export class Editor extends Component {
         return (
             <article>
                 <header>
-                    <input 
-                        type="text" 
+                    <input
+                        type="text"
                         value={ note.name }
                         onChange={this.handleNameChange} />
 
                     <button type="submit" onClick={this.handleSaveClick}>Save Note</button>
                 </header>
 
-                <RichTextEditor value={this.state.value} onChange={this.handleEditorChange} />
+                <RichTextEditor value={note.content} onChange={this.handleEditorChange} />
             </article>
         );
     }
