@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import RichTextEditor, { EditorValue } from 'react-rte';
 
-import { addNote } from 'actions';
-import { store } from 'store';
+import { addNote, updateNote } from 'src/actions';
+import { store } from 'src/store';
 
 export class Editor extends Component {
     constructor(props) {
@@ -28,7 +28,7 @@ export class Editor extends Component {
 
         const noteToSave = {
             name: note.name,
-            content: note.content.toString('html')
+            content: note.content.toString('markdown')
         };
 
         store.dispatch(addNote(noteToSave));
@@ -45,6 +45,7 @@ export class Editor extends Component {
         const { note } = props;
 
         return {
+            _id: note._id,
             name: note.name,
             content: RichTextEditor.createValueFromString(note.content, 'html')
         }
@@ -80,7 +81,15 @@ export class Editor extends Component {
     }
 
     saveNote() {
-        console.log('saving', this.state.note);
+        const { note } = this.state;
+
+        const noteToSave = {
+            _id: note._id,
+            name: note.name,
+            content: note.content.toString('html')
+        };
+
+        store.dispatch(updateNote(noteToSave));
     }
 
     render() {
