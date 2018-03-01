@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import RichTextEditor, { EditorValue } from 'react-rte';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 import { addNote, updateNote } from 'src/actions';
 import { store } from 'src/store';
@@ -98,12 +100,16 @@ export class Editor extends Component {
         return (
             <article>
                 <header>
-                    <input
-                        type="text"
+                    <TextField
+                        label="Note Name"
                         value={ note.name }
                         onChange={this.handleNameChange} />
 
-                    <button type="submit" onClick={this.handleSaveClick}>Save Note</button>
+                    <DefaultButton
+                        primary={true}
+                        text="Create Note"
+                        type="submit"
+                        onClick={this.handleSaveClick} />
                 </header>
 
                 <RichTextEditor value={note.content} onChange={this.handleEditorChange} />

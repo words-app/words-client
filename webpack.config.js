@@ -29,7 +29,24 @@ module.exports = {
             presets: ['babel-preset-env']
           }
         }
-      }
+      },
+      {
+        test: /\.scss$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader",
+          options: {
+            sourceMap: true
+          }
+        }, {
+          loader: "sass-loader",
+          options: {
+            includePaths: [path.resolve(__dirname, 'src/scss')],
+            sourceMap: true
+          }
+        }]
+    }
     ]
   },
 
@@ -50,6 +67,6 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components'),
       src: path.resolve(__dirname, 'src'),
     },
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.scss']
   }
 };
