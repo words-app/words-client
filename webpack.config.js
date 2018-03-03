@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const GlobImporter = require('node-sass-glob-importer');
 
 module.exports = {
   devServer: {
@@ -42,6 +43,7 @@ module.exports = {
         }, {
           loader: "sass-loader",
           options: {
+            importer: GlobImporter(),
             includePaths: [path.resolve(__dirname, 'src/scss')],
             sourceMap: true
           }
