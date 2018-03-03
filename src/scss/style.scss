@@ -1,9 +1,11 @@
+@import './fonts';
 @import './normalize';
 @import './variables';
 
 @import '../components/**/*.scss';
 
 body {
-    font-size: 16px;
     background: $white;
+    font-family: 'Source Serif Pro', serif;
+    font-size: 16px;
 }

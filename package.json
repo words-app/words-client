@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "cross-fetch": "^1.1.1",
-    "office-ui-fabric-react": "^5.56.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",

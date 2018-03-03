@@ -4,7 +4,7 @@ export class AppHeader extends PureComponent {
     render() {
         return (
             <header className="app-header">
-                <span className="title">words.</span>
+                <p className="app-header-title">words<small>.</small></p>
             </header>
         );
     }
