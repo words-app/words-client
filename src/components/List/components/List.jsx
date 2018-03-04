@@ -29,18 +29,18 @@ export class List extends PureComponent {
         }
 
         const notes = this.props.notes.map((note, i) =>
-            <li key={i}>
-                <Link to={note._id}>
+            <li className="list-item" key={i}>
+                <Link to={note._id} className="list-item-link">
                     { note.name }
                 </Link>
 
-                <button onClick={this.deleteNote.bind(this, note)}>✘</button>
+                <button className="list-item-delete" onClick={this.deleteNote.bind(this, note)}>✘</button>
             </li>
         );
 
         return (
-            <div>
-                <ul>
+            <div className="list-panel">
+                <ul className="list-list">
                     {notes}
                 </ul>
             </div>

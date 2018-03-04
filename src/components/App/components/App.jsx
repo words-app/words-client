@@ -37,10 +37,12 @@ export class App extends PureComponent {
 
     render() {
         return (
-            <div>
+            <div className="app">
                 <AppHeader />
-                <List notes={this.state.notes} />
-                { this.renderEditor() }
+                <div className="app-body">
+                    <List notes={this.state.notes} />
+                    { this.renderEditor() }
+                </div>
             </div>
         );
     }
