@@ -11,6 +11,24 @@
 
 .editor-header {
     flex: 0 0 auto;
+    display: flex;
+    padding: 1em;
+}
+
+.editor-title {
+    border: 0;
+    font-size: 2em;
+    background-color: transparent;
+    flex: 1 1 auto;
+}
+
+.editor-save {
+    flex: 0 0 auto;
+    background: $secondary;
+    color: $primary-light;
+    border: 0;
+    cursor: pointer;
+    padding: .5em 1em;
 }
 
 .editor-body {

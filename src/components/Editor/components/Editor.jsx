@@ -100,11 +100,12 @@ export class Editor extends Component {
             <article className="editor-wrap">
                 <header className="editor-header">
                     <input
+                        className="editor-title"
                         type="text"
                         onChange={this.handleNameChange}
                         value={note.name} />
 
-                    <button type="submit" onClick={this.handleSaveClick}>{buttonText}</button>
+                    <button className="editor-save" type="submit" onClick={this.handleSaveClick}>{buttonText}</button>
                 </header>
 
                 <RichTextEditor className="editor-body" value={note.content} onChange={this.handleEditorChange} />
