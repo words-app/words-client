@@ -97,8 +97,8 @@ export class Editor extends Component {
         const buttonText = note.hasOwnProperty("_id") ? "Save Changes" : "Create Note";
 
         return (
-            <article>
-                <header>
+            <article className="editor-wrap">
+                <header className="editor-header">
                     <input
                         type="text"
                         onChange={this.handleNameChange}
@@ -107,7 +107,7 @@ export class Editor extends Component {
                     <button type="submit" onClick={this.handleSaveClick}>{buttonText}</button>
                 </header>
 
-                <RichTextEditor value={note.content} onChange={this.handleEditorChange} />
+                <RichTextEditor className="editor-body" value={note.content} onChange={this.handleEditorChange} />
             </article>
         );
     }

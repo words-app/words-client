@@ -1,11 +1,12 @@
 .app-header {
-    padding: 1em 1em;
-    border-bottom: 1px solid $black;
+    padding: .5em 1em;
+    border-bottom: 1px solid $primary-dark;
     flex: 0 0 auto;
+    background-color: $primary-dark;
 }
 
 .app-header-title {
-    color: $black;
-    font-size: 1.5rem;
+    color: $secondary-alt;
+    font-size: 1rem;
     margin: 0;
 }

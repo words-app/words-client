@@ -1,6 +1,6 @@
 .list-panel {
     @include scrollhelper;
-    background-color: $primary-dark;
+    background-color: darken($primary-dark, 10%);
     width: $screen-sm;
 }
 
