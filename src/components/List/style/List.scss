@@ -1,11 +1,11 @@
 .list-panel {
+    @include scrollhelper;
     background-color: $primary-dark;
-    padding: 1em;
     width: $screen-sm;
 }
 
 .list-list {
-    padding: 0;
+    padding: 1em;
     margin: 0;
     list-style-type: none;
 }
