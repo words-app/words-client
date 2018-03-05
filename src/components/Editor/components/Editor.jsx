@@ -103,7 +103,8 @@ export class Editor extends Component {
                         className="editor-title"
                         type="text"
                         onChange={this.handleNameChange}
-                        value={note.name} />
+                        value={note.name}
+                        placeholder="Untitled Note" />
 
                     <button className="editor-save" type="submit" onClick={this.handleSaveClick}>{buttonText}</button>
                 </header>

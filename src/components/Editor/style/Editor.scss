@@ -20,6 +20,12 @@
     font-size: 2em;
     background-color: transparent;
     flex: 1 1 auto;
+
+    &:focus {
+        outline: 0;
+        background: $secondary-alt;
+        color: $primary-light;
+    }
 }
 
 .editor-save {
