@@ -5,25 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GlobImporter = require('node-sass-glob-importer');
 
 module.exports = {
-  devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    historyApiFallback: true,
-    overlay: true,
-  },
-
-  devtool: 'source-map',
-
   entry: {
     app: './src/index.js'
   },
-
-  mode: 'development',
-
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -60,7 +49,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template:'./src/index.html',
-      title: 'Nizzotes Client'
+      title: 'words.'
     }),
   ],
 
