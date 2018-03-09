@@ -1,1 +1,1 @@
-# nizzotes-client
+# words-client
